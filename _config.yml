@@ -28,7 +28,7 @@ author:
 
 photo:
   # 建议把照片放到 `assets/img/profile.jpg`，然后改成下面这个路径
-  path: "/assets/img/profile.jpeg"
+  path: "/assets/img/profile.jpg"
   alt: "Profile photo"
   width: 260
 
