@@ -54,7 +54,7 @@ sections:
 
     conferences:
       - id: "icml_2025"
-        authors: "<b>H Li</b>, H Chi, M Liu, W Huang, L Xu, W Yang"
+        authors: "<b>H. Li</b>, H. Chi, M. Liu, W. Huang, L. Xu, W. Yang"
         title: "Transformer-Based Spatial-Temporal Counterfactual Outcomes Estimation"
         venue_html: 'In <a href="https://icml.cc/Conferences/2025/index.html" target="_blank"><i>International Conference on Machine Learning (ICML 2025)</i></a>'
         year: "2025"
@@ -74,7 +74,7 @@ sections:
           }
 
       - id: "neurips_2024"
-        authors: "H Chi, <b>H Li</b>, W Yang, F Liu, L Lan, X Ren, T Liu, B Han"
+        authors: "H. Chi, <b>H. Li</b>, W. Yang, F. Liu, L. Lan, X. Ren, T. Liu, B. Han"
         title: "Unveiling causal reasoning in large language models: Reality or mirage?"
         venue_html: 'In <a href="https://neurips.cc/Conferences/2024" target="_blank"><i>Conference on Neural Information Processing Systems (NeurIPS 2024)</i></a>'
         year: "2024"
