@@ -1,0 +1,278 @@
+---
+layout: none
+---
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: 'en' }}">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="{{ site.description | escape }}" />
+    <title>{{ site.title | escape }}</title>
+
+    <link rel="stylesheet" href="{{ '/assets/css/jemdoc.css' | relative_url }}" type="text/css" />
+    <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}" type="text/css" />
+
+    <script type="text/javascript">
+      // Toggle Display of BibTeX
+      function toggleBibtex(articleid) {
+        var bib = document.getElementById("bib_" + articleid);
+        if (!bib) return;
+        if (bib.className.indexOf("bibtex") !== -1) {
+          bib.className.indexOf("noshow") === -1
+            ? (bib.className = "bibtex noshow")
+            : (bib.className = "bibtex");
+        }
+      }
+    </script>
+  </head>
+
+  <body>
+    <div id="layout-content" style="margin-top: 25px">
+      <table class="top-table">
+        <tbody>
+          <tr>
+            <td style="width: 670px">
+              <div id="toptitle">
+                <h1><b>{{ site.author.name }}</b>&nbsp;</h1>
+              </div>
+
+              {% if site.author.position %}
+                <h3>{{ site.author.position }}</h3>
+              {% endif %}
+
+              <p>
+                {% if site.author.affiliation_lines %}
+                  {% for a in site.author.affiliation_lines %}
+                    {% if a.url and a.url != "" %}
+                      <a href="{{ a.url }}" target="_blank" rel="noopener">{{ a.text }}</a>
+                    {% else %}
+                      {{ a.text }}
+                    {% endif %}
+                    <br />
+                  {% endfor %}
+                {% endif %}
+                <br />
+                {% if site.author.address_lines %}
+                  {% for line in site.author.address_lines %}
+                    {{ line }}<br />
+                  {% endfor %}
+                {% endif %}
+              </p>
+
+              <p>
+                {% if site.author.email %}E-mail: {{ site.author.email }}<br />{% endif %}
+                {% if site.author.links and site.author.links.size > 0 %}
+                  [<span class="links-inline">
+                    {% for l in site.author.links %}
+                      {% if l.url and l.url != "" %}
+                        <a href="{{ l.url }}" target="_blank" rel="noopener">{{ l.label }}</a>
+                      {% else %}
+                        {{ l.label }}
+                      {% endif %}
+                    {% endfor %}
+                  </span>]
+                  <br />
+                {% endif %}
+              </p>
+            </td>
+
+            <td>
+              {% if site.photo and site.photo.path %}
+                <img
+                  class="profile-photo"
+                  src="{{ site.photo.path | relative_url }}"
+                  alt="{{ site.photo.alt | default: 'photo' | escape }}"
+                  width="{{ site.photo.width | default: 260 }}"
+                />
+              {% endif %}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      {% if site.sections.short_bio %}
+        <h2>Short Bio</h2>
+        <p>{{ site.sections.short_bio | markdownify }}</p>
+      {% endif %}
+
+      {% if site.sections.research_experience and site.sections.research_experience.size > 0 %}
+        <h2>Research Experience</h2>
+        <ul>
+          {% for item in site.sections.research_experience %}
+            <li>
+              {% if item.title %}<b>{{ item.title }}</b>{% endif %}{% if item.year %}, {{ item.year }}{% endif %}
+              <br />
+              {% if item.org %}
+                {% if item.org_url and item.org_url != "" %}
+                  <a href="{{ item.org_url }}" target="_blank" rel="noopener">{{ item.org }}</a>
+                {% else %}
+                  {{ item.org }}
+                {% endif %}
+                <br />
+              {% endif %}
+              {% if item.extra_lines %}
+                {% for line in item.extra_lines %}
+                  {{ line }}<br />
+                {% endfor %}
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+
+      {% assign pubs = site.sections.publications %}
+
+      {% if pubs and pubs.preprints and pubs.preprints.size > 0 %}
+        <h2>Selected Preprint</h2>
+        <ul class="biblist">
+          {% for p in pubs.preprints %}
+            <li>
+              {% assign a_last = p.authors | slice: -1 %}
+              {% if p.authors %}{{ p.authors }}.{% endif %} <br />
+              {% if p.title %}
+                {% assign t_last = p.title | slice: -1 %}
+                {{ p.title }}{% if t_last != '.' and t_last != '?' and t_last != '!' %}.{% endif %}
+              {% endif %}
+              {% if p.venue %} {{ p.venue }},{% endif %}
+              {% if p.year %} {{ p.year }}.{% endif %}
+              <br />
+              {% if p.links %}
+                {% for link in p.links %}
+                  {% if link.url and link.url != "" %}
+                    <a href="{{ link.url }}" target="_blank" rel="noopener">[{{ link.label }}]</a>
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+              {% if p.bibtex and p.bibtex != "" %}
+                <a href="javascript:toggleBibtex('{{ p.id }}')">[BibTeX]</a>
+                <div id="bib_{{ p.id }}" class="bibtex noshow"><pre>{{ p.bibtex | escape }}</pre></div>
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+
+      {% if pubs and pubs.conferences and pubs.conferences.size > 0 %}
+        <h2>Selected Conference</h2>
+        <ul class="biblist">
+          {% for p in pubs.conferences %}
+            <li>
+              {% assign a_last = p.authors | slice: -1 %}
+              {% if p.authors %}{{ p.authors }}.{% endif %} <br />
+              {% if p.title %}
+                {% assign t_last = p.title | slice: -1 %}
+                {{ p.title }}{% if t_last != '.' and t_last != '?' and t_last != '!' %}.{% endif %}
+              {% endif %} <br />
+              {% if p.venue_html %}{{ p.venue_html }}{% endif %}{% if p.year %}, {{ p.year }}.{% endif %}
+              <br />
+              {% if p.links %}
+                {% for link in p.links %}
+                  {% if link.url and link.url != "" %}
+                    <a href="{{ link.url }}" target="_blank" rel="noopener">[{{ link.label }}]</a>
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+              {% if p.bibtex and p.bibtex != "" %}
+                <a href="javascript:toggleBibtex('{{ p.id }}')">[BibTeX]</a>
+                <div id="bib_{{ p.id }}" class="bibtex noshow"><pre>{{ p.bibtex | escape }}</pre></div>
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+
+      {% if pubs and pubs.journals and pubs.journals.size > 0 %}
+        <h2>Selected Journal</h2>
+        <ul class="biblist">
+          {% for p in pubs.journals %}
+            <li>
+              {% assign a_last = p.authors | slice: -1 %}
+              {% if p.authors %}{{ p.authors }}.{% endif %} <br />
+              {% if p.title %}
+                {% assign t_last = p.title | slice: -1 %}
+                {{ p.title }}{% if t_last != '.' and t_last != '?' and t_last != '!' %}.{% endif %}
+              {% endif %} <br />
+              {% if p.venue_html %}{{ p.venue_html }}{% endif %}{% if p.year %}, {{ p.year }}.{% endif %}
+              <br />
+              {% if p.links %}
+                {% for link in p.links %}
+                  {% if link.url and link.url != "" %}
+                    <a href="{{ link.url }}" target="_blank" rel="noopener">[{{ link.label }}]</a>
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+              {% if p.bibtex and p.bibtex != "" %}
+                <a href="javascript:toggleBibtex('{{ p.id }}')">[BibTeX]</a>
+                <div id="bib_{{ p.id }}" class="bibtex noshow"><pre>{{ p.bibtex | escape }}</pre></div>
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+
+      {% if site.sections.presentations and site.sections.presentations.size > 0 %}
+        <h2>Presentation</h2>
+        <ul>
+          {% for t in site.sections.presentations %}
+            <li>
+              {% assign t_last = t.title | slice: -1 %}
+              {{ t.title }}{% if t_last != '.' and t_last != '?' and t_last != '!' %}.{% endif %} <br />
+              {{ t.venue }}{% if t.year %}, {{ t.year }}{% endif %}. <br />
+              {% if t.links %}
+                {% for link in t.links %}
+                  {% if link.url and link.url != "" %}
+                    <a href="{{ link.url }}" target="_blank" rel="noopener">[{{ link.label }}]</a>
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+
+      {% if site.sections.honors_awards and site.sections.honors_awards.size > 0 %}
+        <h2>Honor &amp; Award</h2>
+        <ul>
+          {% for a in site.sections.honors_awards %}
+            <li>{{ a }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+
+      {% if site.sections.academic_service and site.sections.academic_service.size > 0 %}
+        <h2>Academic Service</h2>
+        <ul>
+          {% for s in site.sections.academic_service %}
+            <li>{{ s }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+
+      {% if site.sections.teaching and site.sections.teaching.size > 0 %}
+        <h2>Teaching</h2>
+        <ul>
+          {% for c in site.sections.teaching %}
+            <li>{{ c }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+
+      {% if site.sections.mentorship and site.sections.mentorship.size > 0 %}
+        <h2>Research Mentorship</h2>
+        <ul>
+          {% for m in site.sections.mentorship %}
+            <li>{{ m }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+
+      <div id="footer">
+        <div id="footer-text"></div>
+        {% if site.footer.copyright %}{{ site.footer.copyright }}{% endif %}
+        {% if site.footer.last_update %} | Last Update: {{ site.footer.last_update }}{% endif %}
+      </div>
+      <br />
+    </div>
+  </body>
+</html>
+

@@ -1,0 +1,52 @@
+/* Small tweaks on top of jemdoc.css */
+
+.top-table {
+  width: 100%;
+}
+
+.profile-photo {
+  display: block;
+  max-width: 320px;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-left: auto;
+}
+
+.links-inline a + a::before {
+  content: ", ";
+  color: #000;
+}
+
+/* BibTeX box style (same as reference page) */
+div.noshow { display: none; }
+div.bibtex {
+  margin-right: 0%;
+  margin-top: 1.2em;
+  margin-bottom: 1em;
+  border: 1px solid silver;
+  padding: 0em 1em;
+  background: #ffffee;
+}
+div.bibtex pre {
+  font-size: 80%;
+  overflow: auto;
+  width: 100%;
+  padding: 1em 0em;
+}
+
+@media (max-width: 860px) {
+  body {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+  .top-table, .top-table tbody, .top-table tr, .top-table td {
+    display: block;
+    width: 100% !important;
+  }
+  .profile-photo {
+    margin: 12px 0 0 0;
+    max-width: 260px;
+  }
+}
+

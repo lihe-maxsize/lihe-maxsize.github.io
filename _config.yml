@@ -1,0 +1,125 @@
+title: "LI HE | Homepage"
+description: "学术主页 / Academic homepage"
+
+# 如果你用的是 `https://<username>.github.io/<repo>/` 这种“项目页”，需要把 baseurl 设成 "/<repo>"
+# 如果是 `https://<username>.github.io/` 这种“用户页”，baseurl 留空即可。
+baseurl: ""
+url: "https://lihe-maxsize.github.io/"
+
+lang: "zh-CN"
+
+author:
+  name: "李鹤"
+  name_en: "LI HE"
+  position: "PhD Student"
+  affiliation_lines:
+    - text: "TMLR Group / Department of Computer Science"
+      url: "https://github.com/tmlr-group"
+    - text: "Hong Kong Baptist University"
+      url: "https://www.hkbu.edu.hk/"
+  address_lines:
+    - "Hong Kong, China"
+  email: "csheli@comp.hkbu.edu.hk"
+  links:
+    - label: "Google Scholar"
+      url: "https://scholar.google.cz/citations?user=pPmfNVkAAAAJ&hl=zh-CN"
+    - label: "GitHub"
+      url: "https://github.com/lihe-maxsize"
+
+photo:
+  # 建议把照片放到 `assets/img/profile.jpg`，然后改成下面这个路径
+  path: "/assets/img/profile.jpeg"
+  alt: "Profile photo"
+  width: 260
+
+footer:
+  copyright: "© 2026 LI HE"
+  last_update: "2026.03"
+
+sections:
+  short_bio: |
+    I am currently a Ph.D. student in the [Department of Computer Science](https://www.comp.hkbu.edu.hk/v1/) at [Hong Kong Baptist University (HKBU)](https://www.hkbu.edu.hk/), supervised by Prof. [Bo Han](https://scholar.google.cz/citations?user=nTNjqHwAAAAJ&hl=zh-CN). 
+    I also work in close collaboration with Dr. [Haoang Chi](https://scholar.google.cz/citations?user=q0dsTq4AAAAJ&hl=zh-CN). 
+    My research focuses on advancing artificial intelligence through causality, with specific interests in:
+    - Causal World Models
+    - Causal Spatial Intelligence
+    - Causal Reasoning in Multimodal Large Language Models
+
+  # 每段经历是一条 item：title（职位/身份），year（年份/区间），org（机构），org_url，extra_lines（多行补充）
+  research_experience: []
+
+  # publication 分组：preprints / conferences / journals
+  publications:
+    preprints: []
+
+    conferences:
+      - id: "icml_2025"
+        authors: "<b>H Li</b>, H Chi, M Liu, W Huang, L Xu, W Yang"
+        title: "Transformer-Based Spatial-Temporal Counterfactual Outcomes Estimation"
+        venue_html: 'In <a href="https://icml.cc/Conferences/2025/index.html" target="_blank"><i>International Conference on Machine Learning (ICML 2025)</i></a>'
+        year: "2025"
+        links:
+          - label: "PDF"
+            url: "https://proceedings.mlr.press/v267/li25g.html"
+          - label: "Code"
+            url: "https://github.com/lihe-maxsize/DeppSTCI_Release_Version-master"
+        bibtex: |
+          @inproceedings{li2025transformer,
+            title={Transformer-Based Spatial-Temporal Counterfactual Outcomes Estimation},
+            author={Li, He and Chi, Haoang and Liu, Mingyu and Huang, Wanrong and Xu, Liyang and Yang, Wenjing},
+            booktitle={International Conference on Machine Learning},
+            pages={34185--34208},
+            year={2025},
+            organization={PMLR}
+          }
+
+      - id: "neurips_2024"
+        authors: "H Chi, <b>H Li</b>, W Yang, F Liu, L Lan, X Ren, T Liu, B Han"
+        title: "Unveiling causal reasoning in large language models: Reality or mirage?"
+        venue_html: 'In <a href="https://neurips.cc/Conferences/2024" target="_blank"><i>Conference on Neural Information Processing Systems (NeurIPS 2024)</i></a>'
+        year: "2024"
+        links:
+          - label: "PDF"
+            url: "https://proceedings.neurips.cc/paper_files/paper/2024/file/af2bb2b2280d36f8842e440b4e275152-Paper-Conference.pdf"
+          - label: "Code"
+            url: "https://github.com/Haoang97/CausalProbe-2024"
+        bibtex: |
+          @article{chi2024unveiling,
+            title={Unveiling causal reasoning in large language models: Reality or mirage?},
+            author={Chi, Haoang and Li, He and Yang, Wenjing and Liu, Feng and Lan, Long and Ren, Xiaoguang and Liu, Tongliang and Han, Bo},
+            journal={Advances in Neural Information Processing Systems},
+            volume={37},
+            pages={96640--96670},
+            year={2024}
+          }
+
+    journals:
+      - id: "lan2026cwoe"
+        authors: "L. Lan, Z. Hu, <b>H. Li</b>, T. Liu, X. Liu"
+        title: "C-WOE: Clustering for Out-of-Distribution Detection Learning with Wild Outlier Exposure"
+        venue_html: '<a href="https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=83" target="_blank"><i>IEEE Transactions on Image Processing (IEEE TIP)</i></a>'
+        year: "2026"
+        links:
+          - label: "PDF"
+            url: "https://ieeexplore.ieee.org/document/11396440"
+        bibtex: |
+          @article{lan2026c,
+            title={C-WOE: Clustering for Out-of-Distribution Detection Learning with Wild Outlier Exposure},
+            author={Lan, Long and Hu, Zhaohui and Li, He and Liu, Tongliang and Liu, Xinwang},
+            journal={IEEE Transactions on Image Processing},
+            year={2026},
+            publisher={IEEE}
+          }
+
+  presentations: []
+
+  honors_awards: []
+
+  academic_service:
+    - "Conference Reviewer: ICML 2026, ICLR 2026."
+    - "Journal Reviewer: TMLR."
+
+  teaching: []
+
+  mentorship: []
+
